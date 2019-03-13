@@ -9,6 +9,14 @@ namespace Humidifier.Redshift
         {
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Redshift::Cluster";
+            }
+        }
+
         /// <summary>
         /// AllowVersionUpgrade
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-allowversionupgrade
@@ -43,6 +51,19 @@ namespace Humidifier.Redshift
         /// PrimitiveType: String
         /// </summary>
         public dynamic AvailabilityZone
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ClusterIdentifier
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-clusteridentifier
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic ClusterIdentifier
         {
             get;
             set;

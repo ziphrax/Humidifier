@@ -10,6 +10,120 @@ namespace Humidifier.CodeBuild
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::CodeBuild::Project";
+            }
+        }
+
+        /// <summary>
+        /// Description
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-description
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic Description
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// VpcConfig
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-vpcconfig
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: VpcConfig
+        /// </summary>
+        public VpcConfig VpcConfig
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// SecondarySources
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-secondarysources
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// ItemType: Source
+        /// </summary>
+        public List<Source> SecondarySources
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// EncryptionKey
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-encryptionkey
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic EncryptionKey
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Triggers
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-triggers
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: ProjectTriggers
+        /// </summary>
+        public ProjectTriggers Triggers
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// SecondaryArtifacts
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-secondaryartifacts
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// ItemType: Artifacts
+        /// </summary>
+        public List<Artifacts> SecondaryArtifacts
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Source
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-source
+        /// Required: True
+        /// UpdateType: Mutable
+        /// Type: Source
+        /// </summary>
+        public Source Source
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Name
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-name
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic Name
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Artifacts
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-artifacts
@@ -37,13 +151,13 @@ namespace Humidifier.CodeBuild
         }
 
         /// <summary>
-        /// Description
-        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-description
+        /// LogsConfig
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-logsconfig
         /// Required: False
         /// UpdateType: Mutable
-        /// PrimitiveType: String
+        /// Type: LogsConfig
         /// </summary>
-        public dynamic Description
+        public LogsConfig LogsConfig
         {
             get;
             set;
@@ -63,13 +177,13 @@ namespace Humidifier.CodeBuild
         }
 
         /// <summary>
-        /// VpcConfig
-        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-vpcconfig
+        /// QueuedTimeoutInMinutes
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-queuedtimeoutinminutes
         /// Required: False
         /// UpdateType: Mutable
-        /// Type: VpcConfig
+        /// PrimitiveType: Integer
         /// </summary>
-        public VpcConfig VpcConfig
+        public dynamic QueuedTimeoutInMinutes
         {
             get;
             set;
@@ -89,32 +203,6 @@ namespace Humidifier.CodeBuild
         }
 
         /// <summary>
-        /// EncryptionKey
-        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-encryptionkey
-        /// Required: False
-        /// UpdateType: Mutable
-        /// PrimitiveType: String
-        /// </summary>
-        public dynamic EncryptionKey
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Source
-        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-source
-        /// Required: True
-        /// UpdateType: Mutable
-        /// Type: Source
-        /// </summary>
-        public Source Source
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Tags
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-tags
         /// Required: False
@@ -123,19 +211,6 @@ namespace Humidifier.CodeBuild
         /// ItemType: Tag
         /// </summary>
         public List<Tag> Tags
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Name
-        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html#cfn-codebuild-project-name
-        /// Required: False
-        /// UpdateType: Immutable
-        /// PrimitiveType: String
-        /// </summary>
-        public dynamic Name
         {
             get;
             set;
@@ -199,6 +274,32 @@ namespace Humidifier.CodeBuild
             }
 
             /// <summary>
+            /// ArtifactIdentifier
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-artifactidentifier
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic ArtifactIdentifier
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// OverrideArtifactName
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-overrideartifactname
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic OverrideArtifactName
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
             /// Packaging
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-packaging
             /// Required: False
@@ -206,6 +307,19 @@ namespace Humidifier.CodeBuild
             /// PrimitiveType: String
             /// </summary>
             public dynamic Packaging
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// EncryptionDisabled
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-artifacts.html#cfn-codebuild-project-artifacts-encryptiondisabled
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic EncryptionDisabled
             {
                 get;
                 set;
@@ -245,6 +359,64 @@ namespace Humidifier.CodeBuild
             /// PrimitiveType: String
             /// </summary>
             public dynamic NamespaceType
+            {
+                get;
+                set;
+            }
+        }
+
+        public class LogsConfig
+        {
+            /// <summary>
+            /// CloudWatchLogs
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-logsconfig.html#cfn-codebuild-project-logsconfig-cloudwatchlogs
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: CloudWatchLogsConfig
+            /// </summary>
+            public CloudWatchLogsConfig CloudWatchLogs
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// S3Logs
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-logsconfig.html#cfn-codebuild-project-logsconfig-s3logs
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: S3LogsConfig
+            /// </summary>
+            public S3LogsConfig S3Logs
+            {
+                get;
+                set;
+            }
+        }
+
+        public class RegistryCredential
+        {
+            /// <summary>
+            /// Credential
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-registrycredential.html#cfn-codebuild-project-registrycredential-credential
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Credential
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// CredentialProvider
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-registrycredential.html#cfn-codebuild-project-registrycredential-credentialprovider
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic CredentialProvider
             {
                 get;
                 set;
@@ -323,6 +495,19 @@ namespace Humidifier.CodeBuild
             }
 
             /// <summary>
+            /// ImagePullCredentialsType
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-environment.html#cfn-codebuild-project-environment-imagepullcredentialstype
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic ImagePullCredentialsType
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
             /// Image
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-environment.html#cfn-codebuild-project-environment-image
             /// Required: True
@@ -336,6 +521,19 @@ namespace Humidifier.CodeBuild
             }
 
             /// <summary>
+            /// RegistryCredential
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-environment.html#cfn-codebuild-project-environment-registrycredential
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: RegistryCredential
+            /// </summary>
+            public RegistryCredential RegistryCredential
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
             /// ComputeType
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-environment.html#cfn-codebuild-project-environment-computetype
             /// Required: True
@@ -343,6 +541,61 @@ namespace Humidifier.CodeBuild
             /// PrimitiveType: String
             /// </summary>
             public dynamic ComputeType
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Certificate
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-environment.html#cfn-codebuild-project-environment-certificate
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Certificate
+            {
+                get;
+                set;
+            }
+        }
+
+        public class CloudWatchLogsConfig
+        {
+            /// <summary>
+            /// Status
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-cloudwatchlogsconfig.html#cfn-codebuild-project-cloudwatchlogsconfig-status
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Status
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// GroupName
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-cloudwatchlogsconfig.html#cfn-codebuild-project-cloudwatchlogsconfig-groupname
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic GroupName
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// StreamName
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-cloudwatchlogsconfig.html#cfn-codebuild-project-cloudwatchlogsconfig-streamname
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic StreamName
             {
                 get;
                 set;
@@ -383,7 +636,7 @@ namespace Humidifier.CodeBuild
             /// <summary>
             /// Subnets
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-vpcconfig.html#cfn-codebuild-project-vpcconfig-subnets
-            /// Required: True
+            /// Required: False
             /// UpdateType: Mutable
             /// Type: List
             /// PrimitiveItemType: String
@@ -397,7 +650,7 @@ namespace Humidifier.CodeBuild
             /// <summary>
             /// VpcId
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-vpcconfig.html#cfn-codebuild-project-vpcconfig-vpcid
-            /// Required: True
+            /// Required: False
             /// UpdateType: Mutable
             /// PrimitiveType: String
             /// </summary>
@@ -410,12 +663,28 @@ namespace Humidifier.CodeBuild
             /// <summary>
             /// SecurityGroupIds
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-vpcconfig.html#cfn-codebuild-project-vpcconfig-securitygroupids
-            /// Required: True
+            /// Required: False
             /// UpdateType: Mutable
             /// Type: List
             /// PrimitiveItemType: String
             /// </summary>
             public dynamic SecurityGroupIds
+            {
+                get;
+                set;
+            }
+        }
+
+        public class ProjectTriggers
+        {
+            /// <summary>
+            /// Webhook
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-projecttriggers.html#cfn-codebuild-project-projecttriggers-webhook
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic Webhook
             {
                 get;
                 set;
@@ -464,6 +733,35 @@ namespace Humidifier.CodeBuild
             }
         }
 
+        public class S3LogsConfig
+        {
+            /// <summary>
+            /// Status
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-s3logsconfig.html#cfn-codebuild-project-s3logsconfig-status
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Status
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Location
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-s3logsconfig.html#cfn-codebuild-project-s3logsconfig-location
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Location
+            {
+                get;
+                set;
+            }
+        }
+
         public class Source
         {
             /// <summary>
@@ -480,6 +778,19 @@ namespace Humidifier.CodeBuild
             }
 
             /// <summary>
+            /// ReportBuildStatus
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-reportbuildstatus
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic ReportBuildStatus
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
             /// Auth
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-auth
             /// Required: False
@@ -487,6 +798,19 @@ namespace Humidifier.CodeBuild
             /// Type: SourceAuth
             /// </summary>
             public SourceAuth Auth
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// SourceIdentifier
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codebuild-project-source.html#cfn-codebuild-project-source-sourceidentifier
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic SourceIdentifier
             {
                 get;
                 set;

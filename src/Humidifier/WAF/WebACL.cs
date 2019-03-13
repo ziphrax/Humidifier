@@ -5,6 +5,14 @@ namespace Humidifier.WAF
 
     public class WebACL : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::WAF::WebACL";
+            }
+        }
+
         /// <summary>
         /// DefaultAction
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html#cfn-waf-webacl-defaultaction
@@ -82,7 +90,7 @@ namespace Humidifier.WAF
             /// <summary>
             /// Action
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waf-webacl-rules.html#cfn-waf-webacl-rules-action
-            /// Required: True
+            /// Required: False
             /// UpdateType: Mutable
             /// Type: WafAction
             /// </summary>

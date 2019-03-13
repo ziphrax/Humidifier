@@ -10,6 +10,14 @@ namespace Humidifier.SNS
             public static string TopicName =  "TopicName" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::SNS::Topic";
+            }
+        }
+
         /// <summary>
         /// DisplayName
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic.html#cfn-sns-topic-displayname
@@ -18,6 +26,19 @@ namespace Humidifier.SNS
         /// PrimitiveType: String
         /// </summary>
         public dynamic DisplayName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// KmsMasterKeyId
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-topic.html#cfn-sns-topic-kmsmasterkeyid
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic KmsMasterKeyId
         {
             get;
             set;

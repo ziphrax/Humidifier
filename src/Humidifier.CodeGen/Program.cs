@@ -27,13 +27,19 @@ namespace Humidifier.CodeGen
         {
             Console.WriteLine("Cleaning files");
 
-            var basePath = Environment.GetEnvironmentVariable("BUILD_PATH");
-            var humidifierPath = Path.Combine(basePath, "src", "Humidifier");
-            var codegenPath = Path.Combine(basePath, "src", "Humidifier.CodeGen");
+            var pwd = Directory.GetCurrentDirectory();
+            var srcPath = FindPath(pwd, "Humidifier.sln");
+            var humidifierPath = Path.Combine(srcPath, "Humidifier");
+            var codegenPath = Path.Combine(srcPath, "Humidifier.CodeGen");
 
             foreach (var directory in Directory.GetDirectories(humidifierPath))
             {
-                if (directory.EndsWith("bin") || directory.EndsWith("obj")) continue;
+                if (directory.EndsWith("bin") || directory.EndsWith("obj"))
+                    continue;
+
+                if (directory.Contains("Serverless"))
+                    continue;
+
                 Directory.Delete(directory, true);
             }
 
@@ -51,6 +57,12 @@ namespace Humidifier.CodeGen
 
             var response = client.SendAsync(request).GetAwaiter().GetResult();
             var json = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+            //
+            // https://github.com/jakejscott/Humidifier/issues/12
+            // 
+            json = json.Replace("VPCEndpointType", "VpcEndpointType");
+
 
             File.WriteAllText(Path.Combine(codegenPath, "Specification.json"), json);
 
@@ -120,12 +132,31 @@ namespace Humidifier.CodeGen
                     resourceClassDecl = resourceClassDecl.AddMembers(attributesClassDecl);
                 }
 
+                {
+                    var propertyDecAWSType = PropertyDeclaration(ParseTypeName("string"), "AWSTypeName")
+                            .AddModifiers(Token(SyntaxKind.PublicKeyword))
+                            .AddModifiers(Token(SyntaxKind.OverrideKeyword))
+                            .AddAccessorListAccessors(
+                                AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithBody(Block(
+                                        ReturnStatement(
+                                            LiteralExpression(
+                                                SyntaxKind.StringLiteralExpression,
+                                                Literal(string.Format(@"@""{0}""", resourceType.Name), resourceType.Name)
+                                            )
+                                        )
+                                    )
+                                )
+                            );
+
+                    resourceClassDecl = resourceClassDecl.AddMembers(propertyDecAWSType);
+                }
+
                 foreach (var property in resourceType.Properties)
                 {
                     var typeName = GetTypeName(property);
 
                     var propertyName = property.Name;
-                    if (property.Name == resourceClassName)
+                    if (propertyName == resourceClassName || propertyName == "Attributes")
                     {
                         propertyName += "_";
                     }
@@ -159,7 +190,7 @@ namespace Humidifier.CodeGen
                         var typeName = GetTypeName(property);
 
                         var propertyName = property.Name;
-                        if (property.Name == propertyTypeClassName)
+                        if (property.Name == propertyTypeClassName || propertyName == "Attributes")
                         {
                             propertyName += "_";
                         }
@@ -499,6 +530,15 @@ namespace Humidifier.CodeGen
             }
 
             return property;
+        }
+
+        static string FindPath(string path, string searchPattern)
+        {
+            var files = Directory.GetFiles(path, searchPattern, SearchOption.TopDirectoryOnly);
+            if (files.Any()) return path;
+            var parent = Directory.GetParent(path);
+            if (parent.Exists) return FindPath(parent.FullName, searchPattern);
+            return null;
         }
     }
 }

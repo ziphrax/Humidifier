@@ -5,6 +5,14 @@ namespace Humidifier.Batch
 
     public class JobDefinition : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Batch::JobDefinition";
+            }
+        }
+
         /// <summary>
         /// Type
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html#cfn-batch-jobdefinition-type
@@ -32,9 +40,35 @@ namespace Humidifier.Batch
         }
 
         /// <summary>
+        /// NodeProperties
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html#cfn-batch-jobdefinition-nodeproperties
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: NodeProperties
+        /// </summary>
+        public NodeProperties NodeProperties
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Timeout
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html#cfn-batch-jobdefinition-timeout
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: Timeout
+        /// </summary>
+        public Timeout Timeout
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// ContainerProperties
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html#cfn-batch-jobdefinition-containerproperties
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// Type: ContainerProperties
         /// </summary>
@@ -73,6 +107,49 @@ namespace Humidifier.Batch
 
     namespace JobDefinitionTypes
     {
+        public class NodeProperties
+        {
+            /// <summary>
+            /// MainNode
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-nodeproperties.html#cfn-batch-jobdefinition-nodeproperties-mainnode
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic MainNode
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// NodeRangeProperties
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-nodeproperties.html#cfn-batch-jobdefinition-nodeproperties-noderangeproperties
+            /// Required: True
+            /// UpdateType: Mutable
+            /// Type: List
+            /// ItemType: NodeRangeProperty
+            /// </summary>
+            public List<NodeRangeProperty> NodeRangeProperties
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// NumNodes
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-nodeproperties.html#cfn-batch-jobdefinition-nodeproperties-numnodes
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic NumNodes
+            {
+                get;
+                set;
+            }
+        }
+
         public class Volumes
         {
             /// <summary>
@@ -121,6 +198,97 @@ namespace Humidifier.Batch
         public class ContainerProperties
         {
             /// <summary>
+            /// User
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-user
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic User
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Memory
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-memory
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic Memory
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Privileged
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-privileged
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic Privileged
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// JobRoleArn
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-jobrolearn
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic JobRoleArn
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// ReadonlyRootFilesystem
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-readonlyrootfilesystem
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic ReadonlyRootFilesystem
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Vcpus
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-vcpus
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic Vcpus
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Image
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-image
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Image
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
             /// MountPoints
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-mountpoints
             /// Required: False
@@ -129,19 +297,6 @@ namespace Humidifier.Batch
             /// ItemType: MountPoints
             /// </summary>
             public List<MountPoints> MountPoints
-            {
-                get;
-                set;
-            }
-
-            /// <summary>
-            /// User
-            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-user
-            /// Required: False
-            /// UpdateType: Mutable
-            /// PrimitiveType: String
-            /// </summary>
-            public dynamic User
             {
                 get;
                 set;
@@ -176,32 +331,6 @@ namespace Humidifier.Batch
             }
 
             /// <summary>
-            /// Memory
-            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-memory
-            /// Required: True
-            /// UpdateType: Mutable
-            /// PrimitiveType: Integer
-            /// </summary>
-            public dynamic Memory
-            {
-                get;
-                set;
-            }
-
-            /// <summary>
-            /// Privileged
-            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-privileged
-            /// Required: False
-            /// UpdateType: Mutable
-            /// PrimitiveType: Boolean
-            /// </summary>
-            public dynamic Privileged
-            {
-                get;
-                set;
-            }
-
-            /// <summary>
             /// Environment
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-environment
             /// Required: False
@@ -210,32 +339,6 @@ namespace Humidifier.Batch
             /// ItemType: Environment
             /// </summary>
             public List<Environment> Environment
-            {
-                get;
-                set;
-            }
-
-            /// <summary>
-            /// JobRoleArn
-            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-jobrolearn
-            /// Required: False
-            /// UpdateType: Mutable
-            /// PrimitiveType: String
-            /// </summary>
-            public dynamic JobRoleArn
-            {
-                get;
-                set;
-            }
-
-            /// <summary>
-            /// ReadonlyRootFilesystem
-            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-readonlyrootfilesystem
-            /// Required: False
-            /// UpdateType: Mutable
-            /// PrimitiveType: Boolean
-            /// </summary>
-            public dynamic ReadonlyRootFilesystem
             {
                 get;
                 set;
@@ -256,26 +359,58 @@ namespace Humidifier.Batch
             }
 
             /// <summary>
-            /// Vcpus
-            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-vcpus
-            /// Required: True
+            /// InstanceType
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-instancetype
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic InstanceType
+            {
+                get;
+                set;
+            }
+        }
+
+        public class Timeout
+        {
+            /// <summary>
+            /// AttemptDurationSeconds
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-timeout.html#cfn-batch-jobdefinition-timeout-attemptdurationseconds
+            /// Required: False
             /// UpdateType: Mutable
             /// PrimitiveType: Integer
             /// </summary>
-            public dynamic Vcpus
+            public dynamic AttemptDurationSeconds
+            {
+                get;
+                set;
+            }
+        }
+
+        public class NodeRangeProperty
+        {
+            /// <summary>
+            /// Container
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-noderangeproperty.html#cfn-batch-jobdefinition-noderangeproperty-container
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: ContainerProperties
+            /// </summary>
+            public ContainerProperties Container
             {
                 get;
                 set;
             }
 
             /// <summary>
-            /// Image
-            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-image
+            /// TargetNodes
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-noderangeproperty.html#cfn-batch-jobdefinition-noderangeproperty-targetnodes
             /// Required: True
             /// UpdateType: Mutable
             /// PrimitiveType: String
             /// </summary>
-            public dynamic Image
+            public dynamic TargetNodes
             {
                 get;
                 set;

@@ -5,14 +5,41 @@ namespace Humidifier.CodePipeline
 
     public class Pipeline : Humidifier.Resource
     {
+        public static class Attributes
+        {
+            public static string Version =  "Version" ;
+        }
+
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::CodePipeline::Pipeline";
+            }
+        }
+
         /// <summary>
         /// ArtifactStore
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-artifactstore
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// Type: ArtifactStore
         /// </summary>
         public ArtifactStore ArtifactStore
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ArtifactStores
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html#cfn-codepipeline-pipeline-artifactstores
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// ItemType: ArtifactStoreMap
+        /// </summary>
+        public List<ArtifactStoreMap> ArtifactStores
         {
             get;
             set;
@@ -174,6 +201,19 @@ namespace Humidifier.CodePipeline
             }
 
             /// <summary>
+            /// Region
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-stages-actions.html#cfn-codepipeline-pipeline-stages-actions-region
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Region
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
             /// RoleArn
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-stages-actions.html#cfn-codepipeline-pipeline-stages-actions-rolearn
             /// Required: False
@@ -267,6 +307,35 @@ namespace Humidifier.CodePipeline
             /// PrimitiveType: String
             /// </summary>
             public dynamic Type
+            {
+                get;
+                set;
+            }
+        }
+
+        public class ArtifactStoreMap
+        {
+            /// <summary>
+            /// ArtifactStore
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-artifactstoremap.html#cfn-codepipeline-pipeline-artifactstoremap-artifactstore
+            /// Required: True
+            /// UpdateType: Mutable
+            /// Type: ArtifactStore
+            /// </summary>
+            public ArtifactStore ArtifactStore
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Region
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-codepipeline-pipeline-artifactstoremap.html#cfn-codepipeline-pipeline-artifactstoremap-region
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Region
             {
                 get;
                 set;

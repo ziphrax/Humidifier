@@ -5,6 +5,14 @@ namespace Humidifier.Route53
 
     public class RecordSetGroup : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Route53::RecordSetGroup";
+            }
+        }
+
         /// <summary>
         /// Comment
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-recordsetgroup.html#cfn-route53-recordsetgroup-comment
@@ -149,6 +157,19 @@ namespace Humidifier.Route53
             /// PrimitiveType: String
             /// </summary>
             public dynamic HostedZoneName
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// MultiValueAnswer
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset.html#cfn-route53-recordset-multivalueanswer
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic MultiValueAnswer
             {
                 get;
                 set;

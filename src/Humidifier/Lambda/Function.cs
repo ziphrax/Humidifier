@@ -10,6 +10,14 @@ namespace Humidifier.Lambda
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Lambda::Function";
+            }
+        }
+
         /// <summary>
         /// Code
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-code
@@ -96,6 +104,20 @@ namespace Humidifier.Lambda
         /// PrimitiveType: String
         /// </summary>
         public dynamic KmsKeyArn
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Layers
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-layers
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// PrimitiveItemType: String
+        /// </summary>
+        public dynamic Layers
         {
             get;
             set;

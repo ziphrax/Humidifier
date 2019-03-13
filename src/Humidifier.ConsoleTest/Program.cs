@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using Humidifier.IoT1Click;
 using Humidifier.Json;
 using Humidifier.Lambda.FunctionTypes;
+using Newtonsoft.Json;
 
 namespace Humidifier.ConsoleTest
 {
@@ -28,7 +31,8 @@ namespace Humidifier.ConsoleTest
             var stack = new Stack
             {
                 AWSTemplateFormatVersion = "2010-09-09",
-                Description = "Description"
+                Description = "Description",
+                Transform = "AWS::Serverless-2016-10-31"
             };
 
             //
@@ -266,8 +270,8 @@ namespace Humidifier.ConsoleTest
                 BucketName = Fn.Join("", Fn.Ref("AWS::StackName"), "-images")
             });
 
-            stack.AddDelitionPolicy("ImageBucket", DeletionPolicy.Retain);
-            stack.AddMetadata("ImageBucket", new { Object1 = "Location1", Object2 = "Object2" });
+            stack.AddDeletionPolicy("ImageBucket", DeletionPolicy.Retain);
+            stack.AddResourceMetadata("ImageBucket", new { Object1 = "Location1", Object2 = "Object2" });
 
             stack.Add("DeploymentBucketPolicy", new S3.BucketPolicy
             {
@@ -321,7 +325,7 @@ namespace Humidifier.ConsoleTest
                     S3Bucket = Fn.ImportValue(Fn.Sub("${AutomationStack}-DeploymentBucket")),
                     S3Key = new { Ref = "CodeS3Key" },
                 },
-                Environment = new Environment
+                Environment = new Lambda.FunctionTypes.Environment
                 {
                     Variables = new Dictionary<string, dynamic>
                     {
@@ -417,8 +421,74 @@ namespace Humidifier.ConsoleTest
                     WaitOnResourceSignals = true,
                     PauseTime = "PT10M"
                 }
-            }, 
+            },
             metadata: new { Key1 = "Value1", Key2 = "Value2" });
+
+            stack.Resources.Add("AspNetCoreFunction", new Humidifier.Serverless.Function
+            {
+                Handler = "MyCoolProject.Lambda.WebApi::MyCoolProject.Lambda.WebApi.LambdaEntryPoint::FunctionHandlerAsync",
+                Runtime = "dotnetcore2.0",
+                CodeUri = "",
+                MemorySize = 256,
+                Timeout = 30,
+                Role = null,
+                Policies = new[] { "AWSLambdaFullAccess" },
+                Environment = new Serverless.FunctionTypes.Environment
+                {
+                    Variables = new Dictionary<string, dynamic>
+                    {
+                        ["ENV"] = "test"
+                    }
+                },
+                Events = new Dictionary<string, Serverless.FunctionTypes.EventSource>
+                {
+                    ["Any"] = new Serverless.FunctionTypes.ApiEventSource
+                    {
+                        Properties = new Serverless.FunctionTypes.ApiEventSourceProperties
+                        {
+                            Path = "/{proxy+}",
+                            Method = "ANY"
+                        }
+                    }
+                }
+            });
+
+            stack.Resources.Add("IoTPlacement", new Placement
+            {
+                Attributes_ = new
+                {
+                    Name = "Test"
+                }
+            });
+
+            stack.AddTemplateMetadata("AWS::CloudFormation::Interface", JsonConvert.DeserializeObject(@"{
+    'ParameterGroups': [
+        {
+            'Label': {
+                'default': 'Network Configuration'
+            },
+            'Parameters': [
+                'VPCID',
+                'SubnetId',
+                'SecurityGroupID'
+            ]
+        },
+        {
+            'Label': {
+                'default': 'Amazon EC2 Configuration'
+            },
+            'Parameters': [
+                'InstanceType',
+                'KeyName'
+            ]
+        }
+    ],
+    'ParameterLabels': {
+        'VPCID': {
+            'default': 'Which VPC should this be deployed to?'
+        }
+    }
+}"));
 
             return stack;
         }
@@ -435,6 +505,9 @@ namespace Humidifier.ConsoleTest
             Fn.Split("|", "a|b|c");
             Fn.Sub("${AWS::StackName}-${AWS::Region}-bucket");
             Fn.Select("1", Fn.Split("|", "a|b|c"));
+
+            // CidrBlock: !Select [1, !Cidr [!Ref cidrBlock, !Ref count, !Ref maskSizeForIPv4]]
+            Fn.Cidr("a", "b", "c");
 
             // Because JSON doesn't allow newlines, there's a known hack where you can join multiple lines together using Fn::Join
             Fn.Base64(Fn.Join("",

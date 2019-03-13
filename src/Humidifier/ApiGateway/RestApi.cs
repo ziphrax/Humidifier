@@ -10,6 +10,27 @@ namespace Humidifier.ApiGateway
             public static string RootResourceId =  "RootResourceId" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ApiGateway::RestApi";
+            }
+        }
+
+        /// <summary>
+        /// ApiKeySourceType
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-apikeysourcetype
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic ApiKeySourceType
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// BinaryMediaTypes
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-binarymediatypes
@@ -103,13 +124,13 @@ namespace Humidifier.ApiGateway
         }
 
         /// <summary>
-        /// Mode
-        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-mode
+        /// MinimumCompressionSize
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-minimumcompressionsize
         /// Required: False
         /// UpdateType: Mutable
-        /// PrimitiveType: String
+        /// PrimitiveType: Integer
         /// </summary>
-        public dynamic Mode
+        public dynamic MinimumCompressionSize
         {
             get;
             set;
@@ -137,6 +158,19 @@ namespace Humidifier.ApiGateway
         /// PrimitiveItemType: String
         /// </summary>
         public Dictionary<string, dynamic> Parameters
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Policy
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-policy
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Json
+        /// </summary>
+        public dynamic Policy
         {
             get;
             set;

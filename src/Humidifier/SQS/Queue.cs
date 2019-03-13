@@ -10,6 +10,14 @@ namespace Humidifier.SQS
             public static string QueueName =  "QueueName" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::SQS::Queue";
+            }
+        }
+
         /// <summary>
         /// ContentBasedDeduplication
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-queues.html#aws-sqs-queue-contentbaseddeduplication
@@ -135,6 +143,20 @@ namespace Humidifier.SQS
         /// PrimitiveType: Json
         /// </summary>
         public dynamic RedrivePolicy
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Tags
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-queues.html#cfn-sqs-queue-tags
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// ItemType: Tag
+        /// </summary>
+        public List<Tag> Tags
         {
             get;
             set;

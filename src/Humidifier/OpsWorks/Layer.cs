@@ -5,6 +5,14 @@ namespace Humidifier.OpsWorks
 
     public class Layer : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::OpsWorks::Layer";
+            }
+        }
+
         /// <summary>
         /// Attributes
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-opsworks-layer.html#cfn-opsworks-layer-attributes
@@ -13,7 +21,7 @@ namespace Humidifier.OpsWorks
         /// Type: Map
         /// PrimitiveItemType: String
         /// </summary>
-        public Dictionary<string, dynamic> Attributes
+        public Dictionary<string, dynamic> Attributes_
         {
             get;
             set;
@@ -291,6 +299,19 @@ namespace Humidifier.OpsWorks
 
         public class VolumeConfiguration
         {
+            /// <summary>
+            /// Encrypted
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-layer-volumeconfiguration.html#cfn-opsworks-layer-volumeconfiguration-encrypted
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic Encrypted
+            {
+                get;
+                set;
+            }
+
             /// <summary>
             /// Iops
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-opsworks-layer-volumeconfiguration.html#cfn-opsworks-layer-volconfig-iops

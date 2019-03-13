@@ -7,8 +7,17 @@ namespace Humidifier.Elasticsearch
     {
         public static class Attributes
         {
+            public static string Arn =  "Arn" ;
             public static string DomainArn =  "DomainArn" ;
             public static string DomainEndpoint =  "DomainEndpoint" ;
+        }
+
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Elasticsearch::Domain";
+            }
         }
 
         /// <summary>
@@ -91,6 +100,32 @@ namespace Humidifier.Elasticsearch
         }
 
         /// <summary>
+        /// EncryptionAtRestOptions
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html#cfn-elasticsearch-domain-encryptionatrestoptions
+        /// Required: False
+        /// UpdateType: Immutable
+        /// Type: EncryptionAtRestOptions
+        /// </summary>
+        public EncryptionAtRestOptions EncryptionAtRestOptions
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// NodeToNodeEncryptionOptions
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html#cfn-elasticsearch-domain-nodetonodeencryptionoptions
+        /// Required: False
+        /// UpdateType: Immutable
+        /// Type: NodeToNodeEncryptionOptions
+        /// </summary>
+        public NodeToNodeEncryptionOptions NodeToNodeEncryptionOptions
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// SnapshotOptions
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticsearch-domain.html#cfn-elasticsearch-domain-snapshotoptions
         /// Required: False
@@ -158,6 +193,22 @@ namespace Humidifier.Elasticsearch
             /// PrimitiveItemType: String
             /// </summary>
             public dynamic SubnetIds
+            {
+                get;
+                set;
+            }
+        }
+
+        public class NodeToNodeEncryptionOptions
+        {
+            /// <summary>
+            /// Enabled
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticsearch-domain-nodetonodeencryptionoptions.html#cfn-elasticsearch-domain-nodetonodeencryptionoptions-enabled
+            /// Required: False
+            /// UpdateType: Immutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic Enabled
             {
                 get;
                 set;
@@ -310,6 +361,35 @@ namespace Humidifier.Elasticsearch
             /// PrimitiveType: String
             /// </summary>
             public dynamic VolumeType
+            {
+                get;
+                set;
+            }
+        }
+
+        public class EncryptionAtRestOptions
+        {
+            /// <summary>
+            /// Enabled
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticsearch-domain-encryptionatrestoptions.html#cfn-elasticsearch-domain-encryptionatrestoptions-enabled
+            /// Required: False
+            /// UpdateType: Immutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic Enabled
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// KmsKeyId
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-elasticsearch-domain-encryptionatrestoptions.html#cfn-elasticsearch-domain-encryptionatrestoptions-kmskeyid
+            /// Required: False
+            /// UpdateType: Immutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic KmsKeyId
             {
                 get;
                 set;

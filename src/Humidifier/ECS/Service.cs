@@ -10,6 +10,14 @@ namespace Humidifier.ECS
             public static string Name =  "Name" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ECS::Service";
+            }
+        }
+
         /// <summary>
         /// Cluster
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-cluster
@@ -157,6 +165,19 @@ namespace Humidifier.ECS
         }
 
         /// <summary>
+        /// SchedulingStrategy
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-schedulingstrategy
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic SchedulingStrategy
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// ServiceName
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-servicename
         /// Required: False
@@ -164,6 +185,34 @@ namespace Humidifier.ECS
         /// PrimitiveType: String
         /// </summary>
         public dynamic ServiceName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ServiceRegistries
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-serviceregistries
+        /// Required: False
+        /// UpdateType: Immutable
+        /// Type: List
+        /// ItemType: ServiceRegistry
+        /// </summary>
+        public List<ServiceRegistry> ServiceRegistries
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Tags
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-tags
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// ItemType: Tag
+        /// </summary>
+        public List<Tag> Tags
         {
             get;
             set;
@@ -263,6 +312,61 @@ namespace Humidifier.ECS
             /// PrimitiveType: String
             /// </summary>
             public dynamic Type
+            {
+                get;
+                set;
+            }
+        }
+
+        public class ServiceRegistry
+        {
+            /// <summary>
+            /// ContainerName
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-serviceregistry.html#cfn-ecs-service-serviceregistry-containername
+            /// Required: False
+            /// UpdateType: Immutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic ContainerName
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// ContainerPort
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-serviceregistry.html#cfn-ecs-service-serviceregistry-containerport
+            /// Required: False
+            /// UpdateType: Immutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic ContainerPort
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Port
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-serviceregistry.html#cfn-ecs-service-serviceregistry-port
+            /// Required: False
+            /// UpdateType: Immutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic Port
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// RegistryArn
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-serviceregistry.html#cfn-ecs-service-serviceregistry-registryarn
+            /// Required: False
+            /// UpdateType: Immutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic RegistryArn
             {
                 get;
                 set;

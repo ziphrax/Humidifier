@@ -9,6 +9,14 @@ namespace Humidifier.CloudFormation
             public static string Data =  "Data" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::CloudFormation::WaitCondition";
+            }
+        }
+
         /// <summary>
         /// Count
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waitcondition.html#cfn-waitcondition-count
@@ -25,7 +33,7 @@ namespace Humidifier.CloudFormation
         /// <summary>
         /// Handle
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waitcondition.html#cfn-waitcondition-handle
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// PrimitiveType: String
         /// </summary>
@@ -38,7 +46,7 @@ namespace Humidifier.CloudFormation
         /// <summary>
         /// Timeout
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-waitcondition.html#cfn-waitcondition-timeout
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// PrimitiveType: String
         /// </summary>

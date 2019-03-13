@@ -4,11 +4,19 @@ namespace Humidifier.Athena
 
     public class NamedQuery : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Athena::NamedQuery";
+            }
+        }
+
         /// <summary>
         /// Description
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-namedquery.html#cfn-athena-namedquery-description
         /// Required: False
-        /// UpdateType: Mutable
+        /// UpdateType: Immutable
         /// PrimitiveType: String
         /// </summary>
         public dynamic Description
@@ -21,7 +29,7 @@ namespace Humidifier.Athena
         /// QueryString
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-namedquery.html#cfn-athena-namedquery-querystring
         /// Required: True
-        /// UpdateType: Mutable
+        /// UpdateType: Immutable
         /// PrimitiveType: String
         /// </summary>
         public dynamic QueryString
@@ -34,7 +42,7 @@ namespace Humidifier.Athena
         /// Database
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-athena-namedquery.html#cfn-athena-namedquery-database
         /// Required: True
-        /// UpdateType: Mutable
+        /// UpdateType: Immutable
         /// PrimitiveType: String
         /// </summary>
         public dynamic Database

@@ -10,6 +10,14 @@ namespace Humidifier.Events
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Events::Rule";
+            }
+        }
+
         /// <summary>
         /// Description
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-events-rule.html#cfn-events-rule-description
@@ -105,6 +113,22 @@ namespace Humidifier.Events
 
     namespace RuleTypes
     {
+        public class SqsParameters
+        {
+            /// <summary>
+            /// MessageGroupId
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-sqsparameters.html#cfn-events-rule-sqsparameters-messagegroupid
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic MessageGroupId
+            {
+                get;
+                set;
+            }
+        }
+
         public class RunCommandParameters
         {
             /// <summary>
@@ -236,6 +260,19 @@ namespace Humidifier.Events
             /// Type: RunCommandParameters
             /// </summary>
             public RunCommandParameters RunCommandParameters
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// SqsParameters
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-target.html#cfn-events-rule-target-sqsparameters
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: SqsParameters
+            /// </summary>
+            public SqsParameters SqsParameters
             {
                 get;
                 set;

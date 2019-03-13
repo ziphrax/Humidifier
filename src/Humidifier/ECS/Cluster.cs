@@ -9,6 +9,14 @@ namespace Humidifier.ECS
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ECS::Cluster";
+            }
+        }
+
         /// <summary>
         /// ClusterName
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html#cfn-ecs-cluster-clustername
@@ -17,6 +25,20 @@ namespace Humidifier.ECS
         /// PrimitiveType: String
         /// </summary>
         public dynamic ClusterName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Tags
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html#cfn-ecs-cluster-tags
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// ItemType: Tag
+        /// </summary>
+        public List<Tag> Tags
         {
             get;
             set;

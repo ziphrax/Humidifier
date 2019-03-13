@@ -5,6 +5,14 @@ namespace Humidifier.Route53
 
     public class HealthCheck : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Route53::HealthCheck";
+            }
+        }
+
         /// <summary>
         /// HealthCheckConfig
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-route53-healthcheck.html#cfn-route53-healthcheck-healthcheckconfig
@@ -176,6 +184,20 @@ namespace Humidifier.Route53
             /// PrimitiveType: Integer
             /// </summary>
             public dynamic Port
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Regions
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-healthcheck-healthcheckconfig.html#cfn-route53-healthcheck-healthcheckconfig-regions
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: List
+            /// PrimitiveItemType: String
+            /// </summary>
+            public dynamic Regions
             {
                 get;
                 set;

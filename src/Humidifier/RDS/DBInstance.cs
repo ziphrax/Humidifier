@@ -1,11 +1,20 @@
 namespace Humidifier.RDS
 {
     using System.Collections.Generic;
+    using DBInstanceTypes;
 
     public class DBInstance : Humidifier.Resource
     {
         public static class Attributes
         {
+        }
+
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::RDS::DBInstance";
+            }
         }
 
         /// <summary>
@@ -205,6 +214,32 @@ namespace Humidifier.RDS
         }
 
         /// <summary>
+        /// DeleteAutomatedBackups
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-deleteautomatedbackups
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Boolean
+        /// </summary>
+        public dynamic DeleteAutomatedBackups
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// DeletionProtection
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-deletionprotection
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Boolean
+        /// </summary>
+        public dynamic DeletionProtection
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Domain
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-domain
         /// Required: False
@@ -225,6 +260,46 @@ namespace Humidifier.RDS
         /// PrimitiveType: String
         /// </summary>
         public dynamic DomainIAMRoleName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// EnableCloudwatchLogsExports
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-enablecloudwatchlogsexports
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// PrimitiveItemType: String
+        /// </summary>
+        public dynamic EnableCloudwatchLogsExports
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// EnableIAMDatabaseAuthentication
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-enableiamdatabaseauthentication
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Boolean
+        /// </summary>
+        public dynamic EnableIAMDatabaseAuthentication
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// EnablePerformanceInsights
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-enableperformanceinsights
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Boolean
+        /// </summary>
+        public dynamic EnablePerformanceInsights
         {
             get;
             set;
@@ -374,6 +449,32 @@ namespace Humidifier.RDS
         }
 
         /// <summary>
+        /// PerformanceInsightsKMSKeyId
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-performanceinsightskmskeyid
+        /// Required: False
+        /// UpdateType: Conditional
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic PerformanceInsightsKMSKeyId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// PerformanceInsightsRetentionPeriod
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-performanceinsightsretentionperiod
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Integer
+        /// </summary>
+        public dynamic PerformanceInsightsRetentionPeriod
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Port
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-port
         /// Required: False
@@ -407,6 +508,33 @@ namespace Humidifier.RDS
         /// PrimitiveType: String
         /// </summary>
         public dynamic PreferredMaintenanceWindow
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ProcessorFeatures
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-processorfeatures
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// ItemType: ProcessorFeature
+        /// </summary>
+        public List<ProcessorFeature> ProcessorFeatures
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// PromotionTier
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-promotiontier
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Integer
+        /// </summary>
+        public dynamic PromotionTier
         {
             get;
             set;
@@ -505,6 +633,19 @@ namespace Humidifier.RDS
         }
 
         /// <summary>
+        /// UseDefaultProcessorFeatures
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-usedefaultprocessorfeatures
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Boolean
+        /// </summary>
+        public dynamic UseDefaultProcessorFeatures
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// VPCSecurityGroups
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html#cfn-rds-dbinstance-vpcsecuritygroups
         /// Required: False
@@ -516,6 +657,38 @@ namespace Humidifier.RDS
         {
             get;
             set;
+        }
+    }
+
+    namespace DBInstanceTypes
+    {
+        public class ProcessorFeature
+        {
+            /// <summary>
+            /// Name
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-processorfeature.html#cfn-rds-dbinstance-processorfeature-name
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Name
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Value
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbinstance-processorfeature.html#cfn-rds-dbinstance-processorfeature-value
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Value
+            {
+                get;
+                set;
+            }
         }
     }
 }

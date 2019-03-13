@@ -9,6 +9,14 @@ namespace Humidifier.KMS
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::KMS::Key";
+            }
+        }
+
         /// <summary>
         /// Description
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html#cfn-kms-key-description
@@ -69,6 +77,19 @@ namespace Humidifier.KMS
         /// PrimitiveType: String
         /// </summary>
         public dynamic KeyUsage
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// PendingWindowInDays
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html#cfn-kms-key-pendingwindowindays
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Integer
+        /// </summary>
+        public dynamic PendingWindowInDays
         {
             get;
             set;

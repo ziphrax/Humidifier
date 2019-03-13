@@ -4,6 +4,14 @@ namespace Humidifier.EC2
 
     public class VPCPeeringConnection : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::EC2::VPCPeeringConnection";
+            }
+        }
+
         /// <summary>
         /// PeerOwnerId
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html#cfn-ec2-vpcpeeringconnection-peerownerid
@@ -12,6 +20,19 @@ namespace Humidifier.EC2
         /// PrimitiveType: String
         /// </summary>
         public dynamic PeerOwnerId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// PeerRegion
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html#cfn-ec2-vpcpeeringconnection-peerregion
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic PeerRegion
         {
             get;
             set;

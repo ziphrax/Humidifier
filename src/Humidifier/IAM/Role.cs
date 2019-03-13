@@ -8,6 +8,15 @@ namespace Humidifier.IAM
         public static class Attributes
         {
             public static string Arn =  "Arn" ;
+            public static string RoleId =  "RoleId" ;
+        }
+
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::IAM::Role";
+            }
         }
 
         /// <summary>
@@ -38,6 +47,19 @@ namespace Humidifier.IAM
         }
 
         /// <summary>
+        /// MaxSessionDuration
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html#cfn-iam-role-maxsessionduration
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Integer
+        /// </summary>
+        public dynamic MaxSessionDuration
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Path
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html#cfn-iam-role-path
         /// Required: False
@@ -45,6 +67,19 @@ namespace Humidifier.IAM
         /// PrimitiveType: String
         /// </summary>
         public dynamic Path
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// PermissionsBoundary
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html#cfn-iam-role-permissionsboundary
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic PermissionsBoundary
         {
             get;
             set;

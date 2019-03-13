@@ -5,6 +5,27 @@ namespace Humidifier.AutoScaling
 
     public class AutoScalingGroup : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::AutoScaling::AutoScalingGroup";
+            }
+        }
+
+        /// <summary>
+        /// AutoScalingGroupName
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-autoscaling-autoscalinggroup-autoscalinggroupname
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic AutoScalingGroupName
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// AvailabilityZones
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-as-group-availabilityzones
@@ -98,6 +119,19 @@ namespace Humidifier.AutoScaling
         }
 
         /// <summary>
+        /// LaunchTemplate
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-as-group-launchtemplate
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: LaunchTemplateSpecification
+        /// </summary>
+        public LaunchTemplateSpecification LaunchTemplate
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// LifecycleHookSpecificationList
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-autoscaling-autoscalinggroup-lifecyclehookspecificationlist
         /// Required: False
@@ -166,6 +200,19 @@ namespace Humidifier.AutoScaling
         }
 
         /// <summary>
+        /// MixedInstancesPolicy
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-as-group-mixedinstancespolicy
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: MixedInstancesPolicy
+        /// </summary>
+        public MixedInstancesPolicy MixedInstancesPolicy
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// NotificationConfigurations
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-as-group-notificationconfigurations
         /// Required: False
@@ -187,6 +234,19 @@ namespace Humidifier.AutoScaling
         /// PrimitiveType: String
         /// </summary>
         public dynamic PlacementGroup
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ServiceLinkedRoleARN
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-autoscaling-autoscalinggroup-servicelinkedrolearn
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic ServiceLinkedRoleARN
         {
             get;
             set;
@@ -251,6 +311,22 @@ namespace Humidifier.AutoScaling
 
     namespace AutoScalingGroupTypes
     {
+        public class LaunchTemplateOverrides
+        {
+            /// <summary>
+            /// InstanceType
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-launchtemplateoverrides.html#cfn-autoscaling-autoscalinggroup-launchtemplateoverrides-instancetype
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic InstanceType
+            {
+                get;
+                set;
+            }
+        }
+
         public class LifecycleHookSpecification
         {
             /// <summary>
@@ -345,6 +421,77 @@ namespace Humidifier.AutoScaling
             }
         }
 
+        public class MixedInstancesPolicy
+        {
+            /// <summary>
+            /// InstancesDistribution
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-group-mixedinstancespolicy.html#cfn-as-mixedinstancespolicy-instancesdistribution
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: InstancesDistribution
+            /// </summary>
+            public InstancesDistribution InstancesDistribution
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// LaunchTemplate
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-group-mixedinstancespolicy.html#cfn-as-mixedinstancespolicy-launchtemplate
+            /// Required: True
+            /// UpdateType: Mutable
+            /// Type: LaunchTemplate
+            /// </summary>
+            public LaunchTemplate LaunchTemplate
+            {
+                get;
+                set;
+            }
+        }
+
+        public class LaunchTemplateSpecification
+        {
+            /// <summary>
+            /// LaunchTemplateId
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplatespecification.html#cfn-autoscaling-autoscalinggroup-launchtemplatespecification-launchtemplateid
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic LaunchTemplateId
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// LaunchTemplateName
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplatespecification.html#cfn-autoscaling-autoscalinggroup-launchtemplatespecification-launchtemplatename
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic LaunchTemplateName
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Version
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplatespecification.html#cfn-autoscaling-autoscalinggroup-launchtemplatespecification-version
+            /// Required: True
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic Version
+            {
+                get;
+                set;
+            }
+        }
+
         public class NotificationConfiguration
         {
             /// <summary>
@@ -399,6 +546,117 @@ namespace Humidifier.AutoScaling
             /// PrimitiveItemType: String
             /// </summary>
             public dynamic Metrics
+            {
+                get;
+                set;
+            }
+        }
+
+        public class InstancesDistribution
+        {
+            /// <summary>
+            /// OnDemandAllocationStrategy
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-instancesdistribution.html#cfn-autoscaling-autoscalinggroup-instancesdistribution-ondemandallocationstrategy
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic OnDemandAllocationStrategy
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// OnDemandBaseCapacity
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-instancesdistribution.html#cfn-autoscaling-autoscalinggroup-instancesdistribution-ondemandbasecapacity
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic OnDemandBaseCapacity
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// OnDemandPercentageAboveBaseCapacity
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-instancesdistribution.html#cfn-autoscaling-autoscalinggroup-instancesdistribution-ondemandpercentageabovebasecapacity
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic OnDemandPercentageAboveBaseCapacity
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// SpotAllocationStrategy
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-instancesdistribution.html#cfn-autoscaling-autoscalinggroup-instancesdistribution-spotallocationstrategy
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic SpotAllocationStrategy
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// SpotInstancePools
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-instancesdistribution.html#cfn-autoscaling-autoscalinggroup-instancesdistribution-spotinstancepools
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic SpotInstancePools
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// SpotMaxPrice
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-instancesdistribution.html#cfn-autoscaling-autoscalinggroup-instancesdistribution-spotmaxprice
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic SpotMaxPrice
+            {
+                get;
+                set;
+            }
+        }
+
+        public class LaunchTemplate
+        {
+            /// <summary>
+            /// LaunchTemplateSpecification
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-launchtemplate.html#cfn-as-group-launchtemplate
+            /// Required: True
+            /// UpdateType: Mutable
+            /// Type: LaunchTemplateSpecification
+            /// </summary>
+            public LaunchTemplateSpecification LaunchTemplateSpecification
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Overrides
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-as-mixedinstancespolicy-launchtemplate.html#cfn-as-mixedinstancespolicy-overrides
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: List
+            /// ItemType: LaunchTemplateOverrides
+            /// </summary>
+            public List<LaunchTemplateOverrides> Overrides
             {
                 get;
                 set;

@@ -12,6 +12,14 @@ namespace Humidifier.ElasticLoadBalancing
             public static string DNSName =  "DNSName" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ElasticLoadBalancing::LoadBalancer";
+            }
+        }
+
         /// <summary>
         /// AccessLoggingPolicy
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html#cfn-ec2-elb-accessloggingpolicy
@@ -521,7 +529,7 @@ namespace Humidifier.ElasticLoadBalancing
             /// Type: List
             /// PrimitiveItemType: Json
             /// </summary>
-            public List<dynamic> Attributes
+            public List<dynamic> Attributes_
             {
                 get;
                 set;

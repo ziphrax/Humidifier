@@ -5,6 +5,14 @@ namespace Humidifier.EFS
 
     public class FileSystem : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::EFS::FileSystem";
+            }
+        }
+
         /// <summary>
         /// Encrypted
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-efs-filesystem-encrypted
@@ -53,6 +61,32 @@ namespace Humidifier.EFS
         /// PrimitiveType: String
         /// </summary>
         public dynamic PerformanceMode
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ProvisionedThroughputInMibps
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-elasticfilesystem-filesystem-provisionedthroughputinmibps
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Double
+        /// </summary>
+        public dynamic ProvisionedThroughputInMibps
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ThroughputMode
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html#cfn-elasticfilesystem-filesystem-throughputmode
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic ThroughputMode
         {
             get;
             set;

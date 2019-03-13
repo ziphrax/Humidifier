@@ -5,6 +5,14 @@ namespace Humidifier.Logs
 
     public class MetricFilter : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Logs::MetricFilter";
+            }
+        }
+
         /// <summary>
         /// FilterPattern
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-metricfilter.html#cfn-cwl-metricfilter-filterpattern
@@ -50,6 +58,19 @@ namespace Humidifier.Logs
     {
         public class MetricTransformation
         {
+            /// <summary>
+            /// DefaultValue
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-metricfilter-metrictransformation.html#cfn-cwl-metricfilter-metrictransformation-defaultvalue
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Double
+            /// </summary>
+            public dynamic DefaultValue
+            {
+                get;
+                set;
+            }
+
             /// <summary>
             /// MetricName
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-logs-metricfilter-metrictransformation.html#cfn-cwl-metricfilter-metrictransformation-metricname

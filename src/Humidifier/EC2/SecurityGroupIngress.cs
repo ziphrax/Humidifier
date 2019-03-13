@@ -4,6 +4,14 @@ namespace Humidifier.EC2
 
     public class SecurityGroupIngress : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::EC2::SecurityGroupIngress";
+            }
+        }
+
         /// <summary>
         /// CidrIp
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-ingress.html#cfn-ec2-security-group-ingress-cidrip
@@ -90,6 +98,19 @@ namespace Humidifier.EC2
         /// PrimitiveType: String
         /// </summary>
         public dynamic IpProtocol
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// SourcePrefixListId
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-ingress.html#cfn-ec2-securitygroupingress-sourceprefixlistid
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic SourcePrefixListId
         {
             get;
             set;

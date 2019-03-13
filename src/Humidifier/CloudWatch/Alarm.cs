@@ -10,6 +10,14 @@ namespace Humidifier.CloudWatch
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::CloudWatch::Alarm";
+            }
+        }
+
         /// <summary>
         /// ActionsEnabled
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarms-actionsenabled
@@ -71,6 +79,19 @@ namespace Humidifier.CloudWatch
         /// PrimitiveType: String
         /// </summary>
         public dynamic ComparisonOperator
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// DatapointsToAlarm
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarm-datapointstoalarm
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Integer
+        /// </summary>
+        public dynamic DatapointsToAlarm
         {
             get;
             set;
@@ -146,7 +167,7 @@ namespace Humidifier.CloudWatch
         /// <summary>
         /// MetricName
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarms-metricname
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// PrimitiveType: String
         /// </summary>
@@ -159,7 +180,7 @@ namespace Humidifier.CloudWatch
         /// <summary>
         /// Namespace
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarms-namespace
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// PrimitiveType: String
         /// </summary>
@@ -186,7 +207,7 @@ namespace Humidifier.CloudWatch
         /// <summary>
         /// Period
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html#cfn-cloudwatch-alarms-period
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// PrimitiveType: Integer
         /// </summary>

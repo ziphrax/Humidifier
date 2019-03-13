@@ -5,6 +5,14 @@ namespace Humidifier.DataPipeline
 
     public class Pipeline : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::DataPipeline::Pipeline";
+            }
+        }
+
         /// <summary>
         /// Activate
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datapipeline-pipeline.html#cfn-datapipeline-pipeline-activate
@@ -171,7 +179,7 @@ namespace Humidifier.DataPipeline
             /// Type: List
             /// ItemType: ParameterAttribute
             /// </summary>
-            public List<ParameterAttribute> Attributes
+            public List<ParameterAttribute> Attributes_
             {
                 get;
                 set;

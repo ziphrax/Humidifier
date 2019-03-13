@@ -5,6 +5,14 @@ namespace Humidifier.CertificateManager
 
     public class Certificate : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::CertificateManager::Certificate";
+            }
+        }
+
         /// <summary>
         /// DomainName
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-certificate.html#cfn-certificatemanager-certificate-domainname
@@ -55,6 +63,19 @@ namespace Humidifier.CertificateManager
         /// ItemType: Tag
         /// </summary>
         public List<Tag> Tags
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ValidationMethod
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-certificate.html#cfn-certificatemanager-certificate-validationmethod
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic ValidationMethod
         {
             get;
             set;

@@ -5,6 +5,14 @@ namespace Humidifier.ApiGateway
 
     public class UsagePlan : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ApiGateway::UsagePlan";
+            }
+        }
+
         /// <summary>
         /// ApiStages
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-usageplan.html#cfn-apigateway-usageplan-apistages
@@ -97,6 +105,20 @@ namespace Humidifier.ApiGateway
             /// PrimitiveType: String
             /// </summary>
             public dynamic Stage
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// Throttle
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apigateway-usageplan-apistage.html#cfn-apigateway-usageplan-apistage-throttle
+            /// Required: False
+            /// UpdateType: Mutable
+            /// Type: Map
+            /// ItemType: ThrottleSettings
+            /// </summary>
+            public Dictionary<string, ThrottleSettings> Throttle
             {
                 get;
                 set;

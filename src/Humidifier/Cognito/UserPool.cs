@@ -12,6 +12,14 @@ namespace Humidifier.Cognito
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::Cognito::UserPool";
+            }
+        }
+
         /// <summary>
         /// UserPoolTags
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html#cfn-cognito-userpool-userpooltags
@@ -147,7 +155,7 @@ namespace Humidifier.Cognito
         /// AliasAttributes
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html#cfn-cognito-userpool-aliasattributes
         /// Required: False
-        /// UpdateType: Mutable
+        /// UpdateType: Immutable
         /// Type: List
         /// PrimitiveItemType: String
         /// </summary>
@@ -178,6 +186,20 @@ namespace Humidifier.Cognito
         /// Type: LambdaConfig
         /// </summary>
         public LambdaConfig LambdaConfig
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// UsernameAttributes
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html#cfn-cognito-userpool-usernameattributes
+        /// Required: False
+        /// UpdateType: Immutable
+        /// Type: List
+        /// PrimitiveItemType: String
+        /// </summary>
+        public dynamic UsernameAttributes
         {
             get;
             set;

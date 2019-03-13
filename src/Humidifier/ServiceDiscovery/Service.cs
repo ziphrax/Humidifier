@@ -12,6 +12,14 @@ namespace Humidifier.ServiceDiscovery
             public static string Name =  "Name" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ServiceDiscovery::Service";
+            }
+        }
+
         /// <summary>
         /// Description
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html#cfn-servicediscovery-service-description
@@ -26,13 +34,39 @@ namespace Humidifier.ServiceDiscovery
         }
 
         /// <summary>
+        /// HealthCheckCustomConfig
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html#cfn-servicediscovery-service-healthcheckcustomconfig
+        /// Required: False
+        /// UpdateType: Immutable
+        /// Type: HealthCheckCustomConfig
+        /// </summary>
+        public HealthCheckCustomConfig HealthCheckCustomConfig
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// DnsConfig
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html#cfn-servicediscovery-service-dnsconfig
-        /// Required: True
+        /// Required: False
         /// UpdateType: Mutable
         /// Type: DnsConfig
         /// </summary>
         public DnsConfig DnsConfig
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// NamespaceId
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html#cfn-servicediscovery-service-namespaceid
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic NamespaceId
         {
             get;
             set;
@@ -84,9 +118,22 @@ namespace Humidifier.ServiceDiscovery
             }
 
             /// <summary>
+            /// RoutingPolicy
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-servicediscovery-service-dnsconfig.html#cfn-servicediscovery-service-dnsconfig-routingpolicy
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: String
+            /// </summary>
+            public dynamic RoutingPolicy
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
             /// NamespaceId
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-servicediscovery-service-dnsconfig.html#cfn-servicediscovery-service-dnsconfig-namespaceid
-            /// Required: True
+            /// Required: False
             /// UpdateType: Immutable
             /// PrimitiveType: String
             /// </summary>
@@ -120,6 +167,22 @@ namespace Humidifier.ServiceDiscovery
             /// PrimitiveType: String
             /// </summary>
             public dynamic TTL
+            {
+                get;
+                set;
+            }
+        }
+
+        public class HealthCheckCustomConfig
+        {
+            /// <summary>
+            /// FailureThreshold
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-servicediscovery-service-healthcheckcustomconfig.html#cfn-servicediscovery-service-healthcheckcustomconfig-failurethreshold
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Double
+            /// </summary>
+            public dynamic FailureThreshold
             {
                 get;
                 set;

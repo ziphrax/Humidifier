@@ -5,6 +5,14 @@ namespace Humidifier.ApplicationAutoScaling
 
     public class ScalingPolicy : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ApplicationAutoScaling::ScalingPolicy";
+            }
+        }
+
         /// <summary>
         /// PolicyName
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html#cfn-applicationautoscaling-scalingpolicy-policyname
@@ -360,6 +368,19 @@ namespace Humidifier.ApplicationAutoScaling
             /// Type: CustomizedMetricSpecification
             /// </summary>
             public CustomizedMetricSpecification CustomizedMetricSpecification
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// DisableScaleIn
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-applicationautoscaling-scalingpolicy-targettrackingscalingpolicyconfiguration.html#cfn-applicationautoscaling-scalingpolicy-targettrackingscalingpolicyconfiguration-disablescalein
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic DisableScaleIn
             {
                 get;
                 set;

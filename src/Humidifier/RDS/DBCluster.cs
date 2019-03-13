@@ -1,11 +1,20 @@
 namespace Humidifier.RDS
 {
     using System.Collections.Generic;
+    using DBClusterTypes;
 
     public class DBCluster : Humidifier.Resource
     {
         public static class Attributes
         {
+        }
+
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::RDS::DBCluster";
+            }
         }
 
         /// <summary>
@@ -23,6 +32,19 @@ namespace Humidifier.RDS
         }
 
         /// <summary>
+        /// BacktrackWindow
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-backtrackwindow
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Long
+        /// </summary>
+        public dynamic BacktrackWindow
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// BackupRetentionPeriod
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-backuprententionperiod
         /// Required: False
@@ -30,6 +52,19 @@ namespace Humidifier.RDS
         /// PrimitiveType: Integer
         /// </summary>
         public dynamic BackupRetentionPeriod
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// DBClusterIdentifier
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-dbclusteridentifier
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic DBClusterIdentifier
         {
             get;
             set;
@@ -75,6 +110,46 @@ namespace Humidifier.RDS
         }
 
         /// <summary>
+        /// DeletionProtection
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-deletionprotection
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Boolean
+        /// </summary>
+        public dynamic DeletionProtection
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// EnableCloudwatchLogsExports
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-enablecloudwatchlogsexports
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: List
+        /// PrimitiveItemType: String
+        /// </summary>
+        public dynamic EnableCloudwatchLogsExports
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// EnableIAMDatabaseAuthentication
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-enableiamdatabaseauthentication
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: Boolean
+        /// </summary>
+        public dynamic EnableIAMDatabaseAuthentication
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Engine
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-engine
         /// Required: True
@@ -82,6 +157,19 @@ namespace Humidifier.RDS
         /// PrimitiveType: String
         /// </summary>
         public dynamic Engine
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// EngineMode
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-enginemode
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic EngineMode
         {
             get;
             set;
@@ -192,6 +280,19 @@ namespace Humidifier.RDS
         }
 
         /// <summary>
+        /// ScalingConfiguration
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-scalingconfiguration
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: ScalingConfiguration
+        /// </summary>
+        public ScalingConfiguration ScalingConfiguration
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// SnapshotIdentifier
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-snapshotidentifier
         /// Required: False
@@ -199,6 +300,19 @@ namespace Humidifier.RDS
         /// PrimitiveType: String
         /// </summary>
         public dynamic SnapshotIdentifier
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// SourceRegion
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html#cfn-rds-dbcluster-sourceregion
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic SourceRegion
         {
             get;
             set;
@@ -243,6 +357,64 @@ namespace Humidifier.RDS
         {
             get;
             set;
+        }
+    }
+
+    namespace DBClusterTypes
+    {
+        public class ScalingConfiguration
+        {
+            /// <summary>
+            /// AutoPause
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbcluster-scalingconfiguration.html#cfn-rds-dbcluster-scalingconfiguration-autopause
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic AutoPause
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// MaxCapacity
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbcluster-scalingconfiguration.html#cfn-rds-dbcluster-scalingconfiguration-maxcapacity
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic MaxCapacity
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// MinCapacity
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbcluster-scalingconfiguration.html#cfn-rds-dbcluster-scalingconfiguration-mincapacity
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic MinCapacity
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// SecondsUntilAutoPause
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-dbcluster-scalingconfiguration.html#cfn-rds-dbcluster-scalingconfiguration-secondsuntilautopause
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Integer
+            /// </summary>
+            public dynamic SecondsUntilAutoPause
+            {
+                get;
+                set;
+            }
         }
     }
 }

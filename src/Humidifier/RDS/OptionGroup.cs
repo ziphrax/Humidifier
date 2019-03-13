@@ -5,6 +5,14 @@ namespace Humidifier.RDS
 
     public class OptionGroup : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::RDS::OptionGroup";
+            }
+        }
+
         /// <summary>
         /// EngineName
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-optiongroup.html#cfn-rds-optiongroup-enginename
@@ -138,9 +146,10 @@ namespace Humidifier.RDS
             /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-optiongroup-optionconfigurations.html#cfn-rds-optiongroup-optionconfigurations-optionsettings
             /// Required: False
             /// UpdateType: Mutable
-            /// Type: OptionSetting
+            /// Type: List
+            /// ItemType: OptionSetting
             /// </summary>
-            public OptionSetting OptionSettings
+            public List<OptionSetting> OptionSettings
             {
                 get;
                 set;

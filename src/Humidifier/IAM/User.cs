@@ -10,6 +10,14 @@ namespace Humidifier.IAM
             public static string Arn =  "Arn" ;
         }
 
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::IAM::User";
+            }
+        }
+
         /// <summary>
         /// Groups
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html#cfn-iam-user-groups
@@ -59,6 +67,19 @@ namespace Humidifier.IAM
         /// PrimitiveType: String
         /// </summary>
         public dynamic Path
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// PermissionsBoundary
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html#cfn-iam-user-permissionsboundary
+        /// Required: False
+        /// UpdateType: Mutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic PermissionsBoundary
         {
             get;
             set;

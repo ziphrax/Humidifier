@@ -5,6 +5,14 @@ namespace Humidifier.ApiGateway
 
     public class ApiKey : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::ApiGateway::ApiKey";
+            }
+        }
+
         /// <summary>
         /// CustomerId
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html#cfn-apigateway-apikey-customerid
@@ -79,6 +87,19 @@ namespace Humidifier.ApiGateway
         /// ItemType: StageKey
         /// </summary>
         public List<StageKey> StageKeys
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Value
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-apikey.html#cfn-apigateway-apikey-value
+        /// Required: False
+        /// UpdateType: Immutable
+        /// PrimitiveType: String
+        /// </summary>
+        public dynamic Value
         {
             get;
             set;

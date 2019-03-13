@@ -10,7 +10,16 @@ namespace Humidifier.S3
             public static string Arn =  "Arn" ;
             public static string DomainName =  "DomainName" ;
             public static string DualStackDomainName =  "DualStackDomainName" ;
+            public static string RegionalDomainName =  "RegionalDomainName" ;
             public static string WebsiteURL =  "WebsiteURL" ;
+        }
+
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::S3::Bucket";
+            }
         }
 
         /// <summary>
@@ -154,6 +163,19 @@ namespace Humidifier.S3
         /// Type: NotificationConfiguration
         /// </summary>
         public NotificationConfiguration NotificationConfiguration
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// PublicAccessBlockConfiguration
+        /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html#cfn-s3-bucket-publicaccessblockconfiguration
+        /// Required: False
+        /// UpdateType: Mutable
+        /// Type: PublicAccessBlockConfiguration
+        /// </summary>
+        public PublicAccessBlockConfiguration PublicAccessBlockConfiguration
         {
             get;
             set;
@@ -1697,6 +1719,61 @@ namespace Humidifier.S3
             /// PrimitiveType: String
             /// </summary>
             public dynamic Value
+            {
+                get;
+                set;
+            }
+        }
+
+        public class PublicAccessBlockConfiguration
+        {
+            /// <summary>
+            /// BlockPublicAcls
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-publicaccessblockconfiguration.html#cfn-s3-bucket-publicaccessblockconfiguration-blockpublicacls
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic BlockPublicAcls
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// BlockPublicPolicy
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-publicaccessblockconfiguration.html#cfn-s3-bucket-publicaccessblockconfiguration-blockpublicpolicy
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic BlockPublicPolicy
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// IgnorePublicAcls
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-publicaccessblockconfiguration.html#cfn-s3-bucket-publicaccessblockconfiguration-ignorepublicacls
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic IgnorePublicAcls
+            {
+                get;
+                set;
+            }
+
+            /// <summary>
+            /// RestrictPublicBuckets
+            /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-publicaccessblockconfiguration.html#cfn-s3-bucket-publicaccessblockconfiguration-restrictpublicbuckets
+            /// Required: False
+            /// UpdateType: Mutable
+            /// PrimitiveType: Boolean
+            /// </summary>
+            public dynamic RestrictPublicBuckets
             {
                 get;
                 set;

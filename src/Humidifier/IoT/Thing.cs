@@ -5,6 +5,14 @@ namespace Humidifier.IoT
 
     public class Thing : Humidifier.Resource
     {
+        public override string AWSTypeName
+        {
+            get
+            {
+                return @"AWS::IoT::Thing";
+            }
+        }
+
         /// <summary>
         /// AttributePayload
         /// http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-thing.html#cfn-iot-thing-attributepayload
@@ -44,7 +52,7 @@ namespace Humidifier.IoT
             /// Type: Map
             /// PrimitiveItemType: String
             /// </summary>
-            public Dictionary<string, dynamic> Attributes
+            public Dictionary<string, dynamic> Attributes_
             {
                 get;
                 set;
